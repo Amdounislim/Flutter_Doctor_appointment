@@ -1,5 +1,6 @@
 import 'package:doctor_appointment/utils/config.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,6 +10,33 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<Map<String, dynamic>> medCat = [
+    {
+      "icon": FontAwesomeIcons.userDoctor,
+      "category": "General",
+    },
+    {
+      "icon": FontAwesomeIcons.heartPulse,
+      "category": "Cardiology",
+    },
+    {
+      "icon": FontAwesomeIcons.lungs,
+      "category": "Respirations",
+    },
+    {
+      "icon": FontAwesomeIcons.hand,
+      "category": "Dermatology",
+    },
+    {
+      "icon": FontAwesomeIcons.personPregnant,
+      "category": "Gynecology",
+    },
+    {
+      "icon": FontAwesomeIcons.teeth,
+      "category": "Dental",
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     Config().init(context);
@@ -36,6 +64,51 @@ class _HomePageState extends State<HomePage> {
                 )
               ],
             ),
+            Config.spaceMedium,
+            Text(
+              "Category",
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            Config.spaceSmall,
+            SizedBox(
+              height: Config.heightSize * 0.05,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: medCat.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    margin: const EdgeInsets.only(right: 20),
+                    color: Config.primaryColor,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          FaIcon(
+                            medCat[index]['icon'],
+                            color: Colors.white,
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Text(
+                            medCat[index]['category'],
+                            style: const TextStyle(
+                                fontSize: 16, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+            Config.spaceSmall,
+            const Text(
+              'Appointment Today',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
             Config.spaceSmall,
           ],
         )),
@@ -43,13 +116,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
-//  Row(
-//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//               children:const <Widget>[
-//                  Text(
-//               "Slim",
-//               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-//             ),
-//               ]),
