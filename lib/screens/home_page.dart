@@ -1,3 +1,4 @@
+import 'package:doctor_appointment/components/appointment_card.dart';
 import 'package:doctor_appointment/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -110,6 +111,13 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             Config.spaceSmall,
+            AppointmentCard(),
+            Config.spaceSmall,
+            const Text(
+              'Top Doctors',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            
           ],
         )),
       ),
