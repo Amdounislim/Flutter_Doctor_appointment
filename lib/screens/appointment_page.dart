@@ -194,10 +194,98 @@ class _AppointmentPageState extends State<AppointmentPage> {
                                     const SizedBox(
                                       height: 15,
                                     ),
+                                    const ScheduleCard(),
+                                    const SizedBox(
+                                      height: 15,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
+                                          child: OutlinedButton(
+                                            onPressed: () {},
+                                            child: const Text(
+                                              'Cancel',
+                                              style: TextStyle(
+                                                  color: Config.primaryColor),
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 20,
+                                        ),
+                                        Expanded(
+                                          child: OutlinedButton(
+                                            style: OutlinedButton.styleFrom(
+                                              backgroundColor:
+                                                  Config.primaryColor,
+                                            ),
+                                            onPressed: () {},
+                                            child: const Text(
+                                              'Reschedule',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ])));
                     })))
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ScheduleCard extends StatelessWidget {
+  const ScheduleCard({Key? key}) : super(key: key);
+  // final Map<String, dynamic> appointment;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.grey.shade200,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      width: double.infinity,
+      padding: const EdgeInsets.all(20),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          const Icon(
+            Icons.calendar_today,
+            color: Config.primaryColor,
+            size: 15,
+          ),
+          const SizedBox(
+            width: 5,
+          ),
+          Text(
+            'Monday, 11/28/2022',
+            style: const TextStyle(color: Config.primaryColor),
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          const Icon(
+            Icons.access_alarm,
+            color: Config.primaryColor,
+            size: 17,
+          ),
+          const SizedBox(
+            width: 5,
+          ),
+          Flexible(
+              child: Text(
+            "2:00 PM",
+            style: const TextStyle(color: Config.primaryColor),
+          ))
+        ],
       ),
     );
   }
